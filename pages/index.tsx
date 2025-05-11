@@ -1,67 +1,66 @@
-
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { Button } from "../components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Manitas Express - Reparaciones y Reformas en Elche";
+    console.log("Sitio cargado");
   }, []);
 
   return (
-    <main className="font-sans text-gray-800">
-      <section className="h-screen bg-cover bg-center flex flex-col justify-center items-center text-center px-4" style={{ backgroundImage: "url('/tools-bg.jpg')" }}>
-        <Image src="/favicon.png" alt="Logo Manitas Express" width={80} height={80} className="mb-4" />
-        <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">Manitas Express</h1>
-        <p className="text-lg md:text-xl text-white mt-4 drop-shadow-md">Reparaciones del hogar y reformas en Elche</p>
+    <main className="min-h-screen bg-white text-gray-800 p-4">
+      <header className="text-center py-6">
+        <img src="/favicon.png" alt="Logo Manitas Express" className="mx-auto w-16 h-16" />
+        <h1 className="text-3xl font-bold mt-2">Manitas Express</h1>
+        <p className="text-lg text-gray-600">Reparaciones del hogar y reformas en Elche</p>
+      </header>
+
+      <section className="my-10">
+        <h2 className="text-2xl font-semibold mb-2">Nuestros Servicios</h2>
+        <ul className="list-disc pl-5">
+          <li>🔧 Reparaciones pequeñas (grifos, enchufes, persianas, etc.)</li>
+          <li>🏗️ Reformas grandes (baños, cocinas, suelos, etc.)</li>
+        </ul>
       </section>
 
-      <section className="py-16 px-4 bg-gray-100" id="servicios">
-        <h2 className="text-3xl font-semibold text-center mb-8">Nuestros Servicios</h2>
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <Card><CardContent className="p-6">🔧 Reparaciones pequeñas (grifos, enchufes, persianas, etc.)</CardContent></Card>
-          <Card><CardContent className="p-6">🏗️ Reformas grandes (baños, cocinas, suelos, etc.)</CardContent></Card>
+      <section className="my-10">
+        <h2 className="text-2xl font-semibold mb-2">¿Quiénes Somos?</h2>
+        <p>Somos profesionales con experiencia en reparaciones y reformas, ofreciendo servicio rápido y de calidad en Elche y alrededores.</p>
+      </section>
+
+      <section className="my-10">
+        <h2 className="text-2xl font-semibold mb-2">Trabajos Realizados</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <img src="/trabajo1.jpg" alt="Trabajo 1" className="rounded shadow" />
+          <img src="/trabajo2.jpg" alt="Trabajo 2" className="rounded shadow" />
+          <img src="/tools-bg.jpg" alt="Trabajo 3" className="rounded shadow" />
         </div>
       </section>
 
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold mb-4">¿Quiénes Somos?</h2>
-          <p className="text-lg">Somos profesionales con experiencia en reparaciones y reformas, ofreciendo servicio rápido y de calidad en Elche y alrededores.</p>
-        </div>
+      <section className="my-10">
+        <h2 className="text-2xl font-semibold mb-4">Contáctanos</h2>
+        <Card className="max-w-xl mx-auto">
+          <CardContent className="flex flex-col gap-4 py-4">
+            <Input placeholder="Nombre" />
+            <Input type="email" placeholder="Correo electrónico" />
+            <Textarea placeholder="Mensaje" />
+            <Button>Enviar</Button>
+            <a
+              href="https://wa.me/34643547787"
+              target="_blank"
+              className="text-center text-green-600 underline"
+            >
+              Contactar por WhatsApp
+            </a>
+          </CardContent>
+        </Card>
       </section>
 
-      <section className="py-16 px-4 bg-gray-100" id="galeria">
-        <h2 className="text-3xl font-semibold text-center mb-8">Trabajos Realizados</h2>
-        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          <Image src="/trabajo1.jpg" width={300} height={200} alt="Trabajo 1" className="rounded-lg shadow" />
-          <Image src="/trabajo2.jpg" width={300} height={200} alt="Trabajo 2" className="rounded-lg shadow" />
-          <Image src="/trabajo3.jpg" width={300} height={200} alt="Trabajo 3" className="rounded-lg shadow" />
-        </div>
-      </section>
-
-      <section className="py-16 px-4" id="contacto">
-        <h2 className="text-3xl font-semibold text-center mb-8">Contáctanos</h2>
-        <form className="max-w-xl mx-auto grid gap-4">
-          <Input placeholder="Nombre" required />
-          <Input type="email" placeholder="Correo electrónico" required />
-          <Textarea placeholder="Mensaje" rows={5} required />
-          <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">Enviar</Button>
-        </form>
-        <div className="text-center mt-6">
-          <a href="https://wa.me/34643547787" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-green-500 hover:bg-green-600 text-white">Contactar por WhatsApp</Button>
-          </a>
-        </div>
-      </section>
-
-      <footer className="bg-gray-800 text-white py-6 text-center">
-        <p>© {new Date().getFullYear()} Manitas Express. Todos los derechos reservados.</p>
-        <p>Tel: +34 643 54 77 87</p>
+      <footer className="text-center text-sm text-gray-500 py-6 border-t mt-10">
+        © 2025 Manitas Express. Todos los derechos reservados. <br />
+        Tel: +34 643 54 77 87
       </footer>
     </main>
   );
